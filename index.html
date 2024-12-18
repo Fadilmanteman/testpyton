@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasifikasi Curah Hujan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0056b3;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            display: block;
+        }
+        nav a:hover {
+            background-color: #003f88;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #007BFF;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        input[type="file"] {
+            display: block;
+            margin: 1rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        table th {
+            background-color: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Klasifikasi Curah Hujan</h1>
+</header>
+
+<nav>
+    <a href="#beranda">Beranda</a>
+    <a href="#dataset">Dataset</a>
+    <a href="#klasifikasi">Klasifikasi</a>
+    <a href="#hasil">Hasil</a>
+    <a href="#tentang">Tentang</a>
+</nav>
+
+<div id="beranda" class="container">
+    <h2>Selamat Datang</h2>
+    <p>Website ini dirancang untuk mengklasifikasikan curah hujan menggunakan algoritma K-Nearest Neighbors (KNN) dengan metodologi CRISP-DM. Anda dapat mengunggah dataset, melakukan klasifikasi, dan melihat hasil analisis langsung di sini.</p>
+</div>
+
+<div id="dataset" class="container">
+    <h2>Unggah Dataset</h2>
+    <form id="uploadForm">
+        <label for="fileInput">Unggah file Excel (CSV/Excel):</label>
+        <input type="file" id="fileInput" accept=".csv, .xlsx">
+        <button type="button" onclick="uploadDataset()">Unggah</button>
+    </form>
+    <h3>Pratinjau Dataset</h3>
+    <table id="datasetPreview">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Curah Hujan (mm)</th>
+                <th>Kelembapan (%)</th>
+                <th>Kecepatan Angin (m/s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="5" style="text-align: center;">Tidak ada data untuk ditampilkan</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="klasifikasi" class="container">
+    <h2>Klasifikasi</h2>
+    <form id="classificationForm">
+        <label for="humidity">Kelembapan (%):</label>
+        <input type="number" id="humidity" placeholder="Masukkan kelembapan" required>
+
+        <label for="windspeed">Kecepatan Angin (m/s):</label>
+        <input type="number" id="windspeed" placeholder="Masukkan kecepatan angin" required>
+
+        <button type="button" onclick="predictRainfall()">Prediksi</button>
+    </form>
+    <h3>Hasil Prediksi:</h3>
+    <p id="predictionResult">Belum ada hasil prediksi.</p>
+</div>
+
+<div id="hasil" class="container">
+    <h2>Hasil Analisis</h2>
+    <p>Hasil klasifikasi akan ditampilkan di sini setelah proses prediksi dilakukan.</p>
+</div>
+
+<div id="tentang" class="container">
+    <h2>Tentang</h2>
+    <p>Website ini menggunakan metode CRISP-DM untuk proses klasifikasi, meliputi langkah-langkah berikut:</p>
+    <ul>
+        <li><b>Business Understanding:</b> Menentukan tujuan dan masalah.</li>
+        <li><b>Data Understanding:</b> Memahami struktur dan isi dataset.</li>
+        <li><b>Data Preparation:</b> Menyiapkan data untuk model.</li>
+        <li><b>Modeling:</b> Membangun model menggunakan algoritma KNN.</li>
+        <li><b>Evaluation:</b> Mengevaluasi performa model.</li>
+        <li><b>Deployment:</b> Mengimplementasikan model dalam aplikasi.</li>
+    </ul>
+</div>
+
+<footer>
+    &copy; 2024 Klasifikasi Curah Hujan. All rights reserved.
+</footer>
+
+<script>
+    function uploadDataset() {
+        alert('Fitur unggah dataset akan segera tersedia.');
+    }
+
+    function predictRainfall() {
+        const humidity = document.getElementById('humidity').value;
+        const windspeed = document.getElementById('windspeed').value;
+
+        if (humidity && windspeed) {
+            document.getElementById('predictionResult').textContent = `Prediksi curah hujan berdasarkan kelembapan ${humidity}% dan kecepatan angin ${windspeed} m/s adalah: Hujan Ringan.`;
+        } else {
+            alert('Harap isi semua parameter untuk melakukan prediksi.');
+        }
+    }
+</script>
+
+</body>
+</html>
